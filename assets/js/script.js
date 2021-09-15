@@ -240,11 +240,20 @@ var saveTasks = function () {
 }
 
 var loadTasks = function () {
-    if (tasks === null) {
 
+    var savedTasks = localStorage.getItem("tasks");
+
+    if (!savedTasks) {
+      
+        return false;
     }
 
-    tasks = JSON.parse(tasks);
+    savedTasks = JSON.parse(savedTasks);
+
+    // loop through savedTasks array
+    for (var i = 0; i < savedTasks.length; i++) {
+        createTaskEl(savedTasks[i]);
+    }
 }
 
 formEl.addEventListener("submit", taskFormHandler);
