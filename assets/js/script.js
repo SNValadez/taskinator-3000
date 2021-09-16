@@ -33,8 +33,8 @@ var taskFormHandler = function (event) {
         var taskDataObj = {
             name: taskNameInput,
             type: taskTypeInput,
-            status: "to do"
-        }
+            status: "to do",
+        };
         
         createTaskEl(taskDataObj);
     }
