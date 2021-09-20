@@ -98,7 +98,7 @@ var createTaskActions = function (taskId) {
     // create edit button
     var editButtonEl = document.createElement("button");
     editButtonEl.textContent = "Edit";
-    editButtonEl.classname = "btn edit-btn";
+    editButtonEl.className = "btn edit-btn";
     editButtonEl.setAttribute("data-task-id", taskId);
     actionContainerEl.appendChild(editButtonEl);
 
@@ -226,9 +226,10 @@ var editTask = function (taskId) {
     formEl.querySelector("#save-task").textContent = "Save Task";
 };
 
-var deleteTask = function(taskId) {
+var deleteTask = function (taskId) {
     console.log(taskId);
-    var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+    var taskSelected = document.querySelector(
+        ".task-item[data-task-id='" + taskId + "']");
     taskSelected.remove();
 
 
@@ -251,7 +252,7 @@ var deleteTask = function(taskId) {
 
 var saveTasks = function () {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+};
 
 var loadTasks = function () {
 
@@ -261,6 +262,7 @@ var loadTasks = function () {
       
         return false;
     }
+    console.log("Saved tasks found!");
 
     savedTasks = JSON.parse(savedTasks);
 
@@ -273,3 +275,5 @@ var loadTasks = function () {
 formEl.addEventListener("submit", taskFormHandler);
 pageContentEl.addEventListener("click", taskButtonHandler);
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
+
+loadTasks();
